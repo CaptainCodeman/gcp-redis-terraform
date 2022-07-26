@@ -1,0 +1,19 @@
+spec:
+  restartPolicy: Always
+  containers:
+  - name: redis
+    image: 'redis/redis-stack-server:7.0.0-RC6'
+    env:
+    - name: REDIS_ARGS
+      value: >-
+        --bind 0.0.0.0 --syslog-enabled yes --requirepass PASSWORD
+        --maxmemory 600mb --maxmemory-policy volatile-lfu --maxmemory-samples 3
+        --appendonly yes --activedefrag yes --aof-use-rdb-preamble yes
+    volumeMounts:
+    - name: data
+      mountPath: /data
+      readOnly: false
+  volumes:
+  - name: data
+    hostPath:
+      path: /mnt/disks/redis-data

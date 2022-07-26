@@ -1,0 +1,5 @@
+project          = "my-amazeballs-project"
+credentials_file = "my-amazeballs-project-service-account.json"
+region           = "us-central1"
+zone             = "us-central1-c"
+password         = "dbJXT6UYx6NTn4TfZWFZ"

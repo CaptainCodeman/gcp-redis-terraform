@@ -1,0 +1,16 @@
+#cloud-config
+
+disk_setup:
+  /dev/sdb:
+    table_type: gpt
+    layout: true
+    overwrite: false
+
+fs_setup:
+  - label: data
+    device: /dev/sdb
+    partition: auto
+    filesystem: ext4
+
+mounts:
+ - [ sdb, /mnt/disks/redis-data, "auto", "defaults,nofail", "0", "0" ]
